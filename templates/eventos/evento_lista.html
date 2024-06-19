@@ -1,0 +1,44 @@
+
+{% extends '../base.html' %}
+
+{% block title %} Lista de Veículos {% endblock %}
+
+{% block conteudo %}
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Eventos</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Estes são seus futuros eventos</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                    {% for evento in eventos %}
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Event details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Event name-->
+                                    <h5 class="fw-bolder">{{ evento.titulo }}</h5>
+                                </div>
+                            </div>
+                            <!-- Event actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'evento_detalhes' pk=evento.pk %}">Ver detalhes</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="{% url 'evento_criar' %}">Criar um novo evento</a>
+                </div>
+            </div>
+        </section>
+{% endblock %}

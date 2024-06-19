@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar/Editar Evento</title>
+</head>
+<body>
+    <h1>{{ form.instance.id|yesno:"Editar Evento,Criar Evento" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'evento_lista' %}">Voltar para listagem</a>
+</body>
+</html>

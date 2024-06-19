@@ -1,0 +1,42 @@
+banda
+    admin.py
+    forms.py
+    models.py
+    urls.py
+    views.py
+
+eventos
+    admin.py
+    forms.py
+    models.py
+    urls.py
+    views.py
+
+msmg
+    static
+        css
+        images
+        js
+    settings.py
+    urls.py
+    views.py
+
+templates
+    banda
+        banda_confirm_delete.html
+        banda_detalhes.html
+        banda_form.html
+        banda_lista.html
+        user_register.html
+
+    eventos
+        evento_confirmacao.html
+        evento_detalhes.html
+        evento_form.html
+        evento_lista.html
+    
+    autenticacao.html
+    base.html
+
+db.sqlite3
+manage.py

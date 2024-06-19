@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+
+{% block title %} Detalhes da Banda: {{ banda.nome }} {% endblock %}
+
+{% block conteudo %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title">{{ banda.nome }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <h5 class="card-subtitle mb-2 text-muted">Descrição</h5>
+            <p class="card-text">{{ banda.descricao }}</p>
+          </div>
+          <div class="mb-3">
+            <h5 class="card-subtitle mb-2 text-muted">Membros</h5>
+            <ul>
+              {% for membro in banda.membros.all %}
+                <li>{{ membro.username }}</li>
+              {% empty %}
+                <li>Nenhum membro cadastrado para esta banda.</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <div class="d-grid gap-2 d-md-block">
+            <a class="btn btn-primary me-2" href="{% url 'banda_editar' banda.pk %}">Editar</a>
+            <form action="{% url 'banda_deletar' banda.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-danger me-2" value="Deletar">
+            </form>
+            <a class="btn btn-secondary" href="{% url 'banda_lista' %}">Voltar para a listagem</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
