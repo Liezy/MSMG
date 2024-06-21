@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "eventos.apps.EventosConfig",
     "banda.apps.BandaConfig",
+    "musicas.apps.MusicasConfig"
 ]
 
 MIDDLEWARE = [

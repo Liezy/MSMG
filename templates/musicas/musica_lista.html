@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Músicas{% endblock %}
+
+{% block conteudo %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Músicas</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Listagem</p>
+        </div>
+    </div>
+</header>
+<h1>Lista de Músicas</h1>
+<ul>
+    {% for musica in musicas %}
+        <li>
+            <a href="{% url 'musica_detalhes' musica.pk %}">{{ musica.titulo }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'musica_criar' %}">Adicionar Nova Música</a>
+{% endblock %}
