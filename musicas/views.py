@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import Musica
 from .forms import MusicaForm
 from django.urls import reverse_lazy
@@ -17,4 +17,9 @@ class MusicaCriarView(CreateView):
     model = Musica
     form_class = MusicaForm
     template_name = 'musicas/musica_form.html'
+    success_url = reverse_lazy('musica_lista')
+
+class MusicaDeleteView(DeleteView):
+    model = Musica
+    template_name = 'musicas/musica_confirm_delete.html'
     success_url = reverse_lazy('musica_lista')

@@ -7,7 +7,6 @@ class Musica(models.Model):
     letra_link = models.URLField(blank=True, null=True)
     cifra_link = models.URLField(blank=True, null=True)
     video_link = models.URLField(blank=True, null=True)
-    evento = models.ForeignKey(Evento, on_delete=models.CASCADE, related_name='musicas')
 
     def __str__(self):
         return self.titulo
