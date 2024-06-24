@@ -5,6 +5,8 @@ from .forms import EventoForm
 from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework import generics
+from .serializers import EventoSerializer
 
 class EventoListaView(LoginRequiredMixin, ListView):
     model = Evento
@@ -39,3 +41,11 @@ class EventoDeleteView(DeleteView):
     model = Evento
     template_name = 'eventos/evento_confirmacao_delete.html'
     success_url = reverse_lazy('evento_lista')
+
+class EventoListAPIView(generics.ListCreateAPIView):
+    queryset = Evento.objects.all()
+    serializer_class = EventoSerializer
+    
+class EventoDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Evento.objects.all()
+    serializer_class = EventoSerializer
