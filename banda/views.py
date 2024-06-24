@@ -51,7 +51,10 @@ class ImagemBanda(View):
     def get(self, request, arquivo):
         try:
             banda = get_object_or_404(Banda, imagem='banda/imagens/{}'.format(arquivo))
-            return FileResponse(banda.imagem)
+            if banda.imagem:
+                return FileResponse(banda.imagem.open())
+            else:
+                raise Http404("Imagem não encontrada ou acesso não autorizado!")
         except Banda.DoesNotExist:
             raise Http404("Imagem não encontrada ou acesso não autorizado!")
         except Exception as exception:

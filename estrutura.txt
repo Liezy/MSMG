@@ -1,4 +1,5 @@
 banda
+    imagens
     admin.py
     forms.py
     models.py
@@ -30,7 +31,6 @@ templates
         banda_detalhes.html
         banda_form.html
         banda_lista.html
-        user_register.html
 
     eventos
         evento_confirmacao.html
@@ -38,6 +38,7 @@ templates
         evento_form.html
         evento_lista.html
     
+    user_register.html
     autenticacao.html
     base.html
 

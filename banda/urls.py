@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from .views import BandaListaView, BandaCriarView, BandaUpdateView, BandaDeleteView, BandaDetalhesView, ImagemBanda
 
@@ -9,3 +11,6 @@ urlpatterns = [
     path('<int:pk>/', BandaDetalhesView.as_view(), name='banda_detalhes'),
     path('imagens/<str:arquivo>/', ImagemBanda.as_view(), name='imagem-banda'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
