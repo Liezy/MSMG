@@ -7,6 +7,8 @@ from django.db.models import Count
 from .models import Banda
 from .forms import BandaForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework import generics
+from .serializers import BandaSerializer
 
 class BandaListaView(LoginRequiredMixin, ListView):
     model = Banda
@@ -59,3 +61,11 @@ class ImagemBanda(View):
             raise Http404("Imagem não encontrada ou acesso não autorizado!")
         except Exception as exception:
             raise exception
+        
+class BandaListAPIView(generics.ListAPIView):
+    queryset = Banda.objects.all()
+    serializer_class = BandaSerializer
+    
+class BandaDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Banda.objects.all()
+    serializer_class = BandaSerializer
