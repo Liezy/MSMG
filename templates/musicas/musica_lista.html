@@ -3,7 +3,6 @@
 {% block title %}Lista de Músicas{% endblock %}
 
 {% block conteudo %}
-<!-- Header-->
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
@@ -26,8 +25,8 @@
                         <a href="{% url 'musica_detalhes' musica.pk %}" class="text-decoration-none text-dark">
                             <h5 class="card-title">{{ musica.titulo }}</h5>
                         </a>
-                        <p class="card-text">Artista: {{ musica.artista }}</p>
-                        <p class="card-text">Gênero: {{ musica.genero }}</p>
+                        <a href="{% url 'musica_editar' musica.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{% url 'musica_deletar' musica.pk %}" class="btn btn-sm btn-danger">Deletar</a>
                     </li>
                     {% empty %}
                     <li class="list-group-item">

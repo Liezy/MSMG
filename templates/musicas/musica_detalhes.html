@@ -1,25 +1,24 @@
+<!-- musicas/templates/musicas/musica_detalhes.html -->
 {% extends 'base.html' %}
 
-{% block title %}Detalhes do Evento{% endblock %}
+{% block title %}Detalhes da Música{% endblock %}
 
 {% block conteudo %}
-<h1>{{ evento.titulo }}</h1>
-<p><strong>Data:</strong> {{ evento.data }}</p>
-<p><strong>Local:</strong> {{ evento.local }}</p>
-<p><strong>Descrição:</strong> {{ evento.descricao }}</p>
-
-<h2>Músicas</h2>
+<h1>{{ musica.titulo }}</h1>
 <ul>
-    {% for musica in evento.musicas.all %}
-        <li>{{ musica.titulo }} - <a href="{{ musica.audio_link }}" target="_blank">Áudio</a> - 
-            <a href="{{ musica.letra_link }}" target="_blank">Letra</a> - 
-            <a href="{{ musica.cifra_link }}" target="_blank">Cifra</a> - 
-            <a href="{{ musica.video_link }}" target="_blank">Vídeo</a>
-        </li>
-    {% empty %}
-        <li>Nenhuma música cadastrada para este evento.</li>
-    {% endfor %}
+    {% if musica.audio_link %}
+    <li><a href="{{ musica.audio_link }}" target="_blank">Áudio</a></li>
+    {% endif %}
+    {% if musica.letra_link %}
+    <li><a href="{{ musica.letra_link }}" target="_blank">Letra</a></li>
+    {% endif %}
+    {% if musica.cifra_link %}
+    <li><a href="{{ musica.cifra_link }}" target="_blank">Cifra</a></li>
+    {% endif %}
+    {% if musica.video_link %}
+    <li><a href="{{ musica.video_link }}" target="_blank">Vídeo</a></li>
+    {% endif %}
 </ul>
 
-<a href="{% url 'evento_lista' %}">Voltar à Lista de Eventos</a>
+<a href="{% url 'musica_lista' %}">Voltar à Lista de Músicas</a>
 {% endblock %}

@@ -1,5 +1,6 @@
-{% extends '../base.html' %}
+<!-- banda/banda_lista.html -->
 
+{% extends '../base.html' %}
 {% load static %}
 
 {% block title %} Lista de Bandas {% endblock %}
@@ -31,7 +32,11 @@
       <div class="col-xxl-4 col-xl-6 col-lg-12 mb-4">
         <div class="card mb-4 mb-xl-0 card-hover border">
           <a href="{% url 'banda_detalhes' pk=banda.pk %}">
-            <img src="{% static 'images/banda_default.jpg' %}" alt="{{ banda.nome }}" class="img-fluid w-100 rounded-top-3">
+            {% if banda.imagem %}
+              <img src="{{ banda.imagem.url }}" alt="{{ banda.nome }}" class="img-fluid w-100 rounded-top-3">
+            {% else %}
+              <img src="{% static 'images/banda_default.jpg' %}" alt="{{ banda.nome }}" class="img-fluid w-100 rounded-top-3">
+            {% endif %}
           </a>
           <div class="card-body">
             <h3 class="mb-4 text-truncate">
