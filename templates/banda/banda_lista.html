@@ -1,36 +1,84 @@
+<!-- banda/banda_lista.html -->
+
 {% extends '../base.html' %}
+{% load static %}
 
 {% block title %} Lista de Bandas {% endblock %}
 
+{% block head %}
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block conteudo %}
 
-<div class="container my-5">
-  <div class="row row-cols-3">
-    {% for banda in bandas %}
-      <div class="col">
-        <div class="card shadow-sm h-100">
+<!-- Header -->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Bandas</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Listagem</p>
+    </div>
+  </div>
+</header>
+
+<!-- Bandas Section -->
+<section class="py-6">
+  <div class="container">
+    <div class="row">
+      {% for banda in bandas %}
+      <div class="col-xxl-4 col-xl-6 col-lg-12 mb-4">
+        <div class="card mb-4 mb-xl-0 card-hover border">
+          <a href="{% url 'banda_detalhes' pk=banda.pk %}">
+            {% if banda.imagem %}
+              <img src="{{ banda.imagem.url }}" alt="{{ banda.nome }}" class="img-fluid w-100 rounded-top-3">
+            {% else %}
+              <img src="{% static 'images/banda_default.jpg' %}" alt="{{ banda.nome }}" class="img-fluid w-100 rounded-top-3">
+            {% endif %}
+          </a>
           <div class="card-body">
-            <h5 class="card-title">{{ banda.nome }}</h5>
-            <p class="card-text">{{ banda.descricao | truncatewords:50 }}</p>
+            <h3 class="mb-4 text-truncate">
+              <a href="{% url 'banda_detalhes' pk=banda.pk %}" class="text-inherit">{{ banda.nome }}</a>
+            </h3>
+            <div class="mb-4">
+              <div class="mb-3 lh-1">
+                <span class="me-1">
+                  <i class="bi bi-people"></i>
+                </span>
+                <span>{{ banda.membros.count }} membros</span>
+              </div>
+              <div class="lh-1">
+                <span class="me-1">
+                  <i class="bi bi-calendar3"></i>
+                </span>
+                <span>{{ banda.num_eventos }} eventos</span>
+              </div>
+            </div>
             <div class="d-flex justify-content-between align-items-center">
-              <a href="{% url 'banda_detalhes' pk=banda.pk %}" class="btn btn-primary btn-sm">Ver detalhes</a>
+              <a href="{% url 'banda_detalhes' pk=banda.pk %}" class="btn btn-light-primary text-primary">Ver detalhes</a>
               <div class="d-flex gap-1">
-                <a href="{% url 'banda_editar' banda.pk %}" class="btn btn-outline-secondary btn-sm">Editar</a>
+                <a href="{% url 'banda_editar' banda.pk %}" class="btn btn-outline-secondary">Editar</a>
                 <form action="{% url 'banda_deletar' banda.pk %}" method="post" class="d-inline">
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-outline-danger btn-sm">Deletar</button>
+                  <button type="submit" class="btn btn-outline-danger">Deletar</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
 
-  <div class="text-center mt-4">
-    <a href="{% url 'banda_criar' %}" class="btn btn-primary">Criar Nova Banda</a>
+    <div class="text-center mt-4">
+      <a href="{% url 'banda_criar' %}" class="btn btn-primary">Criar Nova Banda</a>
+    </div>
   </div>
-</div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}

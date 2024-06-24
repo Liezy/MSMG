@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Músicas{% endblock %}
+
+{% block conteudo %}
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Músicas</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Listagem de todas as músicas cadastradas</p>
+        </div>
+    </div>
+</header>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title">Lista de Músicas</h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for musica in musicas %}
+                    <li class="list-group-item">
+                        <a href="{% url 'musica_detalhes' musica.pk %}" class="text-decoration-none text-dark">
+                            <h5 class="card-title">{{ musica.titulo }}</h5>
+                        </a>
+                        <a href="{% url 'musica_editar' musica.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{% url 'musica_deletar' musica.pk %}" class="btn btn-sm btn-danger">Deletar</a>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item">
+                        Nenhuma música encontrada.
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="card-footer bg-light">
+                    <a href="{% url 'musica_criar' %}" class="btn btn-primary">Adicionar Nova Música</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

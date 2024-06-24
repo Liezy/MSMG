@@ -1,7 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Criar/Editar Evento</title>
+    <title>{{ form.instance.id|yesno:"Editar Evento,Criar Evento" }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>{{ form.instance.id|yesno:"Editar Evento,Criar Evento" }}</h1>
@@ -10,6 +56,6 @@
         {{ form.as_p }}
         <button type="submit">Salvar</button>
     </form>
-    <a href="{% url 'evento_lista' %}">Voltar para listagem</a>
+    <a href="{% url 'evento_lista' %}" class="back-link">Voltar para listagem</a>
 </body>
 </html>
