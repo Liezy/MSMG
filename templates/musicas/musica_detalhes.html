@@ -1,0 +1,24 @@
+<!-- musicas/templates/musicas/musica_detalhes.html -->
+{% extends 'base.html' %}
+
+{% block title %}Detalhes da Música{% endblock %}
+
+{% block conteudo %}
+<h1>{{ musica.titulo }}</h1>
+<ul>
+    {% if musica.audio_link %}
+    <li><a href="{{ musica.audio_link }}" target="_blank">Áudio</a></li>
+    {% endif %}
+    {% if musica.letra_link %}
+    <li><a href="{{ musica.letra_link }}" target="_blank">Letra</a></li>
+    {% endif %}
+    {% if musica.cifra_link %}
+    <li><a href="{{ musica.cifra_link }}" target="_blank">Cifra</a></li>
+    {% endif %}
+    {% if musica.video_link %}
+    <li><a href="{{ musica.video_link }}" target="_blank">Vídeo</a></li>
+    {% endif %}
+</ul>
+
+<a href="{% url 'musica_lista' %}">Voltar à Lista de Músicas</a>
+{% endblock %}

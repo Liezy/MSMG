@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deletar Música</title>
+</head>
+<body>
+    <h1>Deletar Música</h1>
+    <p>Tem certeza que deseja apagar "{{ musica.titulo }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, apagar</button>
+    </form>
+    <a href="{% url 'musica_lista' %}">Não, voltar</a>
+</body>
+</html>
