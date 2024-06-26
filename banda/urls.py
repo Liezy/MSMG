@@ -1,11 +1,16 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
-from .views import banda_lista, BandaCriarView, BandaUpdateView, BandaDeleteView, UserRegistrationView, BandaDetalhesView
+from .views import BandaListaView, BandaCriarView, BandaUpdateView, BandaDeleteView, BandaDetalhesView, ImagemBanda
 
 urlpatterns = [
-    path('', banda_lista, name='banda_lista'),
+    path('', BandaListaView.as_view(), name='banda_lista'),
     path('criar/', BandaCriarView.as_view(), name='banda_criar'),
     path('editar/<int:pk>/', BandaUpdateView.as_view(), name='banda_editar'),
     path('deletar/<int:pk>/', BandaDeleteView.as_view(), name='banda_deletar'),
-    path('registrar/', UserRegistrationView.as_view(), name='user_register'),
     path('<int:pk>/', BandaDetalhesView.as_view(), name='banda_detalhes'),
+    path('imagens/<str:arquivo>/', ImagemBanda.as_view(), name='imagem-banda'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
