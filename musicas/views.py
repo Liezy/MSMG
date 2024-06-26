@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from .models import Musica
 from .forms import MusicaForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework import generics
+from .serializers import MusicaSerializer
 
 class MusicaListaView(LoginRequiredMixin, ListView):
     model = Musica
@@ -37,3 +39,11 @@ class MusicaDeletarView(DeleteView):
     model = Musica
     template_name = 'musicas/musica_confirm_delete.html'
     success_url = reverse_lazy('musica_lista')
+
+class MusicaListAPIView(generics.ListCreateAPIView):
+    queryset = Musica.objects.all()
+    serializer_class = MusicaSerializer
+    
+class MusicaDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Musica.objects.all()
+    serializer_class = MusicaSerializer
