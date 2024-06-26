@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "banda.apps.BandaConfig",
     "musicas.apps.MusicasConfig",
     "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
