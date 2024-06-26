@@ -1,61 +1,83 @@
 # MSMG - Management System for Musical Groups
 
-Projeto desenvolvido como parte da disciplina de Desenvolvimento Web Mobile da Universidade Federal do Tocantins.
+![Python](https://img.shields.io/badge/python-3.9-blue.svg)
+![Django](https://img.shields.io/badge/django-4.0.1-green.svg)
+![Bootstrap](https://img.shields.io/badge/bootstrap-5.3.0-purple.svg)
 
-- **Docente:** Thiago Magalhães
-- **Discente:** Eliézer Alencar Moreira
+## Sobre o Projeto
 
-![Logo do Projeto](link-para-logo.png)
+Este é um projeto desenvolvido para a disciplina de Desenvolvimento Web Mobile da Universidade Federal do Tocantins. O MSMG visa criar uma plataforma web para auxiliar grupos musicais na organização e gerenciamento de shows e eventos.
 
-## Visão Geral
+## Universidade Federal do Tocantins
 
-O MSMG é um sistema web projetado para auxiliar grupos musicais no gerenciamento e organização de seus shows e eventos. Ele proporciona uma plataforma centralizada onde os membros dos grupos podem cadastrar informações, acessar o repertório musical para uma melhor organização das escalas de eventos.
+- **Curso**: Bacharelado em Ciência da Computação
+- **Professor**: Thiago Magalhães
+- **Aluno**: Eliézer Alencar Moreira
 
 ## Funcionalidades Principais
 
-1. **Escalas de Eventos:**
-   - Cadastro de eventos com título, data, hora, descrição e local.
-   - Adição de músicas ao evento com áudio, letra, cifra e vídeo.
-   - Escalação de membros para cada evento.
+- Cadastro de grupos musicais com informações detalhadas.
+- Gestão de eventos com adição de músicas, funções dos membros e detalhes do local.
+- Armazenamento do repertório musical com áudio, letra, cifra e vídeo.
 
-2. **Repertório Musical:**
-   - Armazenamento de todas as músicas tocadas pelo grupo.
-   - Acesso fácil às referências das músicas, incluindo áudio, letra, cifra e vídeo.
+## Tecnologias Utilizadas
 
-## Requisitos do Sistema
+- [Python 3.9](https://www.python.org/)
+- [Django 4.0.1](https://www.djangoproject.com/)
+- [Bootstrap 5.3.0](https://getbootstrap.com/)
+- Banco de Dados: SQLite (para ambiente de desenvolvimento)
 
-### Requisitos Funcionais
+## Como Executar o Projeto
 
-#### Gerenciamento de Grupos Musicais
-- **RF01:** Cadastro de grupos musicais com nome, descrição e imagem do grupo.
-- **RF02:** Associação de membros aos grupos musicais.
-- **RF03:** Edição e exclusão de grupos musicais.
+### Pré-requisitos
 
-#### Escalas de Eventos
-- **RF04:** Cadastro de eventos com título, data, hora, descrição e local.
-- **RF05:** Adição e remoção de músicas ao evento.
-- **RF06:** Escalação de membros para eventos.
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-#### Repertório Musical
-- **RF07:** Cadastro de músicas com título, áudio, letra, cifra e vídeo.
-- **RF08:** Edição e exclusão de músicas.
+- [Python 3.9](https://www.python.org/)
+- [Pip](https://pip.pypa.io/en/stable/installation/)
 
-### Requisitos Não Funcionais
+### Passo a Passo
 
-- **RNF01:** Responsividade para diferentes dispositivos móveis e desktops.
-- **RNF02:** Interface intuitiva e de fácil utilização para os usuários.
+1. **Clone o repositório**
+    ```bash
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    ```
 
-## Instalação e Configuração
+2. **Navegue até o diretório do projeto**
+    ```bash
+    cd msmg-project
+    ```
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/msmg.git
-   cd msmg
-2. Instale as dependências:
-   ```bash
-    Instale o Pyhton e o Django.
+3. **Crie e ative o ambiente virtual**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # No Windows use venv\Scripts\activate
+    ```
 
-3. Como Usar
-   ```bash
-   python manage.py runserver
-    
+4. **Instale as dependências**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5. **Configure o banco de dados**
+    - Configure as variáveis de ambiente ou diretamente no arquivo `settings.py`.
+
+6. **Aplique as migrações do banco de dados**
+    ```bash
+    python manage.py migrate
+    ```
+
+7. **Inicie o servidor de desenvolvimento**
+    ```bash
+    python manage.py runserver
+    ```
+
+8. **Acesse o sistema no navegador**
+    ```
+    http://127.0.0.1:8000/
+    ```
+
+## Contato
+
+**Eliézer Alencar Moreira**  
+Email: [eliezer.alencar@uft.edu.br](mailto:eliezer.alencar@uft.edu.br)
