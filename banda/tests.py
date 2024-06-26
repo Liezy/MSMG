@@ -22,4 +22,4 @@ class BandaAPITestCase(TestCase):
         response = self.client.get(self.detail_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['nome'], 'Banda Teste')
-        self.assertEqual(response.data['usuario'], self.user.id)  # Verifica o ID do usuário criador da banda
+        self.assertEqual(response.data['usuario']['id'], self.user.id) # Verifica o ID do usuário criador da banda
